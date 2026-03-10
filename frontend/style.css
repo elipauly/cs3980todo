@@ -1,26 +1,114 @@
-html,
-body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  font-family: sans-serif;
-  overflow: hidden;
-}
-
+/* App container */
 .app {
-  width: 500px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  border: 0.25rem solid #abcea1;
-  border-radius: 0.5rem;
-  padding: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
+  font-family: monospace;
 }
 
-.todo-box {
-  border: 1px solid #abcea1;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  margin: 1rem;
+.h1 {
+  text-align: center;
+  margin-bottom: 20px;
 }
+
+#todos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 16px;    
+  max-height: 75vh;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Todo card */
+.todo-box {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+/* Title */
+.todo-box .fs-4 {
+  font-size: 1.4rem !important;
+  margin-bottom: 4px;
+}
+
+/* Description */
+.todo-box pre {
+  white-space: pre-wrap;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+/* Buttons */
+.todo-box button {
+  margin-right: 6px;
+}
+
+/* Category headers (full width) */
+#todos h3 {
+  grid-column: 1 / -1;   /* makes category headers span both columns */
+  margin-top: 20px;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* Responsive: switch to 1 column on small screens */
+@media (max-width: 700px) {
+  #todos {
+    grid-template-columns: 1fr;
+  }
+}
+
+.modal{
+  font-family: monospace;
+  font-style: italic;
+}
+
+.left-btn {
+  background-color: #91979c;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 2px;
+}
+.right-btn {
+  background-color: #cad1d7;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 2px;
+}
+
+.right-btn {
+  background-color: #cad1d7;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 2px;
+}
+
+.add-btn {
+  background-color: #13d530;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 2px;
+}
+
+edit-btn {
+  background-color: #91979c;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 2px;
+}
+
+delete-btn {
+  background-color: #cad1d7;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 2px;
+} 

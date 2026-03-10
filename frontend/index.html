@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo App</title>
+    <title>My Tofoo App</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -15,14 +15,15 @@
   </head>
   <body class="py-4">
     <div class="app mx-auto">
-      <div class="h1">Todo List</div>
-      <div class="d-flex justify-content-end mb-3">
+      <div class="h1">what's in my fridge?</div>
+      <div class="d-flex justify-content-center mb-3">
         <button
           id="openNewModal"
           data-bs-toggle="modal"
           data-bs-target="#modal-add"
+          style="border-radius: 5px; padding: 5px 10px;"
         >
-          Add New Todo
+          add an item
         </button>
       </div>
       <div id="todos" class="overflow-y-auto"></div>
@@ -33,7 +34,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Add a new Todo</h5>
+            <h5 class="modal-title" style="font-weight:bold;">add an item</h5>
             <button
               type="button"
               class="btn-close"
@@ -44,22 +45,24 @@
           <div class="modal-body">
             <div id="new-todo-form">
               <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
+                <label for="title" class="form-label">item</label>
                 <input type="text" class="form-control" id="title" />
               </div>
               <div class="mb-3">
-                <label for="desc" class="form-label">Description</label>
-                <textarea class="form-control" id="desc" rows="3"></textarea>
+                <label for="desc" class="form-label">amount</label>
+                <textarea class="form-control" id="desc" rows="1"></textarea>
               </div>
               <div class="mb-3">
                 <div class="mb-3">
+                <label for="category" class="form-label">category</label>
                 <select id="category" class="form-control">
-                  <option value="">Select category</option>
-                  <option value="Produce">Produce</option>
-                  <option value="Pantry">Pantry</option>
-                  <option value="Base/Foundation">Base/Foundation</option>
-                  <option value="Condiments">Condiments</option>
-                  <option value="Misc.">Misc.</option>
+                  <option value="">select category</option>
+                  <option value="Produce">produce</option>
+                  <option value="Pantry">pantry</option>
+                  <option value="Protein">protein</option>
+                  <option value="Base/Foundation">base/Foundation</option>
+                  <option value="Condiments">condiments</option>
+                  <option value="Misc.">misc.</option>
                 </select>
               </div>
               </div>
@@ -67,16 +70,8 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button
-              id="close-add-modal"
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button id="add-btn" type="button" class="btn btn-primary">
-              Add
+            <button id="add-btn" type="button" class="add-btn">
+              add
             </button>
           </div>
         </div>
@@ -88,7 +83,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Edit Todo</h5>
+            <h5 class="modal-title">edit item</h5>
             <button
               type="button"
               class="btn-close"
@@ -99,24 +94,26 @@
           <div class="modal-body">
             <div id="edit-todo-form">
               <div class="mb-3">
-                <label for="titleEdit" class="form-label">Title</label>
+                <label for="titleEdit" class="form-label">item</label>
                 <input type="text" class="form-control" id="titleEdit" />
               </div>
               <div class="mb-3">
-                <label for="descEdit" class="form-label">Description</label>
+                <label for="descEdit" class="form-label">amount</label>
                 <textarea
                   class="form-control"
                   id="descEdit"
-                  rows="3"
+                  rows="1"
                 ></textarea>
                 <div class="mb-3">
+                <label for="categoryEdit" class="form-label">category</label>
                 <select id="categoryEdit" class="form-control">
-                  <option value="">Select category</option>
-                  <option value="Produce">Produce</option>
-                  <option value="Pantry">Pantry</option>
-                  <option value="Base/Foundation">Base/Foundation</option>
-                  <option value="Condiments">Condiments</option>
-                  <option value="Misc.">Misc.</option>
+                  <option value="">select category</option>
+                  <option value="Produce">produce</option>
+                  <option value="Pantry">pantry</option>
+                  <option value="Protein">protein</option>
+                  <option value="Base/Foundation">base/Foundation</option>
+                  <option value="Condiments">condiments</option>
+                  <option value="Misc.">misc.</option>
                 </select>
               </div>
               </div>
@@ -124,16 +121,8 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button
-              id="close-edit-modal"
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button id="edit-btn" type="button" class="btn btn-warning">
-              Yes, Update it.
+            <button id="edit-btn" type="button" class="right-btn">
+              update item.
             </button>
           </div>
         </div>

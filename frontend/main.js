@@ -10,9 +10,9 @@ document.getElementById('add-btn').addEventListener('click', (e) => {
   const descInput = document.getElementById('desc');
   const categoryInput = document.getElementById('category');
 
-  if (!titleInput.value || !descInput.value) {
+  if (!titleInput.value) {
     msgDiv.innerHTML =
-      'Please provide non-empty Title and Description when creating a new Todo';
+      'uh oh. what is it?';
     return;
   }
 
@@ -35,10 +35,10 @@ document.getElementById('add-btn').addEventListener('click', (e) => {
     }
   };
 
-  const allowedCategories = ["Produce", "Pantry", "Base/Foundation", "Condiments", "Misc."];
+  const allowedCategories = ["Produce", "Pantry", "Protein","Base/Foundation", "Condiments", "Misc."];
 
   if (!allowedCategories.includes(categoryInput.value)) {
-    msgDiv.innerHTML = "Please select a valid category.";
+    msgDiv.innerHTML = "uh oh. what category is it?";
     return;
   }
 
@@ -126,7 +126,7 @@ function renderTodos(data) {
   //render each category
   Object.keys(groups).forEach(category => {
     //cat header (h3)
-    todoDiv.innerHTML += `<h3 class="mt-4">${category}</h3>`;
+    todoDiv.innerHTML += `<h3 class="mt-4" style="font-family: monospace;">${category}</h3>`;
     //sort by id in descending order and render
     groups[category].sort((a,b) => b.id - a.id).forEach(x => {
       todoDiv.innerHTML +=
@@ -134,17 +134,17 @@ function renderTodos(data) {
         <div class="fw-bold fs-4">${x.title}</div>
         <pre class="text-secondary ps-3">${x.desc}</pre>
         <div>
-          <button type="button" class="btn btn-success btn-sm"
+          <button type="button" class="edit-btn btn-sm" style="border-radius: 4px;"
             data-bs-toggle="modal"
             data-bs-target="#modal-edit"
             onClick="setTodoInEdit(${x.id})"
           >
-            Edit
+            edit
           </button>
-          <button type="button" class="btn btn-danger btn-sm"
+          <button type="button" class="delete-btn btn-sm" style="border-radius: 4px;"
             onClick="deleteTodo(${x.id})"
           >
-            Delete
+            delete
           </button>
         </div>
     </div>
