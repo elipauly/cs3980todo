@@ -10,12 +10,14 @@ document.getElementById('add-btn').addEventListener('click', (e) => {
   const descInput = document.getElementById('desc');
   const categoryInput = document.getElementById('category');
 
+  //if no title
   if (!titleInput.value) {
     msgDiv.innerHTML =
       'uh oh. what is it?';
     return;
   }
 
+  //xhr
   const xhr = new XMLHttpRequest();
   xhr.onload = () => {
     if (xhr.status === 201) {
@@ -36,17 +38,18 @@ document.getElementById('add-btn').addEventListener('click', (e) => {
   };
 
   const allowedCategories = ["Produce", "Pantry", "Protein","Base/Foundation", "Condiments", "Misc."];
-
   if (!allowedCategories.includes(categoryInput.value)) {
     msgDiv.innerHTML = "uh oh. what category is it?";
     return;
   }
 
+  // send request
   xhr.open('POST', api, true);
   xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
   xhr.send(JSON.stringify({ title: titleInput.value, desc: descInput.value, category: categoryInput.value }));
 });
 
+//edit button in edit modal dialog
 document.getElementById('edit-btn').addEventListener('click', (e) => {
   e.preventDefault();
 
@@ -56,12 +59,12 @@ document.getElementById('edit-btn').addEventListener('click', (e) => {
   const categoryInput = document.getElementById('categoryEdit');
   console.log("Selected category:", categoryInput.value);
 
-  if (!titleInput.value || !descInput.value) {
+  if (!titleInput.value || !categoryInput.value) {
     msgDiv.innerHTML =
-      'Please provide non-empty Title and Description when updating a Todo';
+      'what is this new item? check the item title and category';
     return;
   }
-
+  //xhr
   const xhr = new XMLHttpRequest();
   xhr.onload = () => {
     if (xhr.status === 200 || xhr.status === 201) {
@@ -83,12 +86,13 @@ document.getElementById('edit-btn').addEventListener('click', (e) => {
       categoryInput.value = '';
     }
   };
-
+  // send request
   xhr.open('PUT', api + '/' + todoIdInEdit, true);
   xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
   xhr.send(JSON.stringify({ title: titleInput.value, desc: descInput.value, category: categoryInput.value }));
 });
 
+//delete a todo
 function deleteTodo(id) {
   const xhr = new XMLHttpRequest();
   xhr.onload = () => {
@@ -102,6 +106,7 @@ function deleteTodo(id) {
   xhr.send();
 }
 
+//set the todo in edit modal dialog
 function setTodoInEdit(id) {
   todoIdInEdit = id;
   const todo = data.find(x => x.id == id);
@@ -111,11 +116,12 @@ function setTodoInEdit(id) {
   document.getElementById('categoryEdit').value = todo.category;
 }
 
+//render todos
 function renderTodos(data) {
   const todoDiv = document.getElementById('todos');
   todoDiv.innerHTML = '';
 
-  //grouper function
+  //grouper function, uses category as key and array of todos as value
   const groups = data.reduce(( acc, todo) => {
     const category = todo.category || "Uncategorized";
     if (!acc[category]) acc[category] = [];
@@ -126,7 +132,7 @@ function renderTodos(data) {
   //render each category
   Object.keys(groups).forEach(category => {
     //cat header (h3)
-    todoDiv.innerHTML += `<h3 class="mt-4" style="font-family: monospace;">${category}</h3>`;
+    todoDiv.innerHTML += `<h3 class="mt-4">${category}</h3>`;
     //sort by id in descending order and render
     groups[category].sort((a,b) => b.id - a.id).forEach(x => {
       todoDiv.innerHTML +=
