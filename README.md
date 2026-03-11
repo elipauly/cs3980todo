@@ -25,22 +25,22 @@ pip3 freeze > requirements.txt
 ## Screenshots
 **Main Page**
 
-![Screenshot1](./basepage.png)
+![Screenshot1](screenshots/basepage.png)
 
 **Add an item**
-![Screenshot2](./add.png)
+![Screenshot2](screenshots/add.png)
 
 **Add an item cont.**
-![Screenshot3](./add2.png)
+![Screenshot3](screenshots/add2.png)
 
 **Item renders on the page**
-![Screenshot4](./addpost.png)
+![Screenshot4](screenshots/addpost.png)
 
 **Edit item modal**
-![Screenshot5](./editmodal.png)
+![Screenshot5](screenshots/editmodal.png)
 
 **Item is edited (papaya now has 4 ct, updated from 1 ct)**
-![Screenshot6](./postedit.png)
+![Screenshot6](screenshots/postedit.png)
 
 **After deleting an item it is removed**
-![Screenshot7](./postdelete.png)
+![Screenshot7](screenshots/postdelete.png)
